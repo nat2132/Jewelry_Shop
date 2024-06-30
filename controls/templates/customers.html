@@ -1,0 +1,54 @@
+{% extends "abase.html" %}
+{% load static %}
+{% block customers %}
+        <main>
+            <h1>Customers</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+
+            <div class="recent-orders">
+                <h2>Registered Users</h2>
+                <a href="{% url 'admins:add_customer' %}"><span class="material-icons-sharp" style="color: gray; padding-left: 650px;" title="add new customer">person_add</span></a>
+                <table>
+                    <thead>
+                        <tr>
+                          <th>Registered Date</th>
+                          <th>Customers Id</th>
+                          <th>username</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th title="subscription">Sub</th>
+                          <th>Update</th>
+                          <th>Delete</th>
+                          <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for users in customers %}
+                        <tr>
+                            <td>{{ users.date_joined|date:"d/m/Y" }}</td>
+                            <td>{{ users.id }}</td>
+                            <td>{{ users.username }}</td>
+                            <td>{{ users.first_name }}</td>
+                            <td>{{ users.email }}</td>
+                            <td>newsletter</td>
+                            <td class="success">
+                                <a href="{% url 'admins:update_customer' users.id %}">
+                                    <span class="material-icons-sharp">update</span>
+                                </a>
+                            </td>
+                            <td class="success">
+                                <a href="{% url 'admins:delete_customer' users.id %}">
+                                    <span class="material-icons-sharp">delete</span>
+                                </a>
+                            </td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="#">Show All</a>
+            </div>
+        </main>
+        {% endblock customers %}

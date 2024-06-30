@@ -1,0 +1,59 @@
+{% extends "abase.html" %}
+{% load static %}
+{% block control %}
+        <main>
+            <h1>Admin Center</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+
+            <div class="recent-orders">
+                <h2>Registered Admins</h2>
+                <a href="{% url 'admins:add_admin' %}"><span class="material-icons-sharp" style="color: gray; padding-left: 650px;" title="add new admin">person_add</span></a>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">Registered Date</th>
+                            <th style="width: 50px;">Admin ID</th>
+                            <th style="width: 150px;">username</th>
+                            <th style="width: 150px;">Name</th>
+                            <th style="width: 200px;">Email</th>
+                            <th style="width: 150px;" title="Privilege">Privilege</th>
+                            <th style="width: 50px;">Update</th>
+                            <th style="width: 50px;">Delete</th>
+                            <th style="width: 50px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for admin in admins %}
+                        <tr>
+                            <td>{{ admin.date_joined|date:"m/d/Y" }}</td>
+                            <td>{{ admin.id }}</td>
+                            <td>{{ admin.username }}</td>
+                            <td>{{ admin.first_name }}</td>
+                            <td>{{ admin.email }}</td>
+                            <td>
+                                update,
+                                delete,
+                                read,
+                                write
+                            </td>
+                            <td class="success">
+                                <a href="{% url 'admins:update_admin' admin.id %}">
+                                    <span class="material-icons-sharp">update</span>
+                                </a>
+                            </td>
+                            <td class="danger">
+                                <a href="{% url 'admins:delete_admin' admin.id %}">
+                                    <span class="material-icons-sharp">delete</span>
+                                </a>
+                            </td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="#">Show All</a>
+            </div>
+        </main>
+        {% endblock control %}

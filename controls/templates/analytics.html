@@ -1,0 +1,94 @@
+{% extends "abase.html" %}
+{% load static%}
+{% block analytics %}
+        <main>
+            <h1>Analytics</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+            <div class="insights">
+                <div class="sales">
+                   <span class="material-icons-sharp">person</span>
+                   <div class="middle">
+                    <div class="left">
+                        <h3>Total Customers</h3>
+                        <h1>25,024</h1>
+                    </div>
+                    <div class="progress">
+                        <svg>
+                            <circle cx='38' cy='38' r='36'></circle>
+                        </svg>
+                        <div class="number">
+                            <p>24%</p>
+                        </div>
+                    </div>
+                   </div>
+                   <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <div class="expenses">
+                    <span class="material-icons-sharp">shopping_cart</span>
+                    <div class="middle">
+                     <div class="left">
+                         <h3>Total Orders</h3>
+                         <h1>4,160</h1>
+                     </div>
+                     <div class="progress">
+                         <svg>
+                             <circle cx='38' cy='38' r='36'></circle>
+                         </svg>
+                         <div class="number">
+                             <p>35%</p>
+                         </div>
+                     </div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                 </div>
+                 <div class="income">
+                    <span class="material-icons-sharp">stacked_line_chart</span>
+                    <div class="middle">
+                     <div class="left">
+                         <h3>Total Income</h3>
+                         <h1>$10,864</h1>
+                     </div>
+                     <div class="progress">
+                         <svg>
+                             <circle cx='38' cy='38' r='36'></circle>
+                         </svg>
+                         <div class="number">
+                             <p>44%</p>
+                         </div>
+                     </div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                 </div>
+                 <div class="income">
+                    <span class="material-icons-sharp">stacked_line_chart</span>
+                    <div class="middle">
+                     <div class="left">
+                         <h3>Total Profit</h3>
+                         <h1>$5,864</h1>
+                     </div>
+                     <div class="progress">
+                         <svg>
+                             <circle cx='38' cy='38' r='36'></circle>
+                         </svg>
+                         <div class="number">
+                             <p>44%</p>
+                         </div>
+                     </div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                 </div>
+            </div>
+            <div class="charts">
+                <div class="charts-card">
+                   <h2 class="chart-title">Top 5 Products</h2>
+                   <div id="bar-chart"></div>
+                </div>
+                <div class="charts-card">
+                    <h2 class="chart-title">Purchase and Sales Orders</h2>
+                    <div id="area-chart"></div>
+                 </div>
+            </div>
+        </main>
+{% endblock analytics %}

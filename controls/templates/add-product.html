@@ -1,0 +1,100 @@
+{% extends "abase.html" %}
+{% load static %}
+{% block aproduct %}
+<main>
+    <h1>Product</h1>
+    <div class="date">
+        <input type="date">
+    </div>
+    <div class="recent-orders">
+        {% if product %}
+        <h2 style="text-align: center;">Update Product</h2>
+        <form id="product-form" method="post" action="{% url 'admins:update_product' product.id %}" enctype="multipart/form-data">
+    {% else %}
+        <h2 style="text-align: center;">Add Product</h2>
+        <form id="product-form" method="post" action="{% url 'admins:add_product' %}" enctype="multipart/form-data">
+    {% endif %}
+                {% csrf_token %}
+              <div class="product">
+                <label for="title">Product Catagory:</label>
+                <input type="text" id="title" name="product_category" {% if product %} value="{{ product.category }}" {% endif %}  required>
+                <br>
+                <label for="title">Product Name:</label>
+                <input type="text" id="title" name="product_name" {% if product %} value="{{ product.product_name }}" {% endif %} required>
+                <br>
+                <label for="title">Product Size:</label>
+                <input type="text" id="title" name="product_size" {% if product %} value="{{ product.product_size }}" {% endif %} required>
+                <br>
+                <label for="title">Product Price:</label>
+                <input type="text" id="title" name="product_price" {% if product %} value="{{ product.product_price }}" {% endif %} required>
+                <br>
+                <label for="description">Product Description:</label>
+                <textarea id="description" name="description" rows="4" required>{% if product %} {{ product.description }} {% endif %}</textarea>
+                <br>
+                <br>
+                <label for="image-url">Main Image URL:</label>
+                <input type="url" id="main-image-url" {% if product %} value="{{ product.main_image_url }}" {% endif %} name="main_image_url"> 
+                {% if product_images %}
+    <div id="newly-added-images">
+        <h3>Newly Added Images:</h3>
+        {% for product_image in product_images %}
+            {% if product_image.image_url %}
+                <input type="url" name="new_image_urls" value="{{ product_image.image_url }}"><br>
+            {% endif %}
+        {% endfor %}
+        {% for product_image in product_images %}
+            {% if product_image.image %}
+                <input type="text" name="new_image_paths" value="{{ product_image.image.url }}"><br>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}            
+            </div>
+              <br>
+              <div id="new-products"></div> <!-- New div for additional products -->
+              <button type="button" class="add-product">Add Image</button>
+              <button type="submit">Submit</button>
+            </form>
+</main>
+<script>
+    document.querySelector('.add-product').addEventListener('click', function() {
+        var productContainer = document.createElement('div');
+        productContainer.classList.add('product');
+
+        productContainer.innerHTML = `
+        <label for="image-type">Image Type:</label>
+        <select class="image-type" name="image_type">
+            <option value="url">Image URL</option>
+            <option value="file">Image File</option>
+        </select>
+        <br>
+        <div class="file-upload" style="display:none;">
+            <label for="product-image">Product Image:</label>
+            <input type="file" id="product-image" name="image">
+        </div>
+        <div class="image-url-input">
+            <label for="image-url">Image URL:</label>
+            <input type="url" id="image-url" name="image_url">
+        </div>
+        <span class="material-icons-sharp close-icon">close</span> 
+        `;
+
+        productContainer.querySelector('.close-icon').addEventListener('click', function() {
+            productContainer.remove();
+        });
+
+        productContainer.querySelector('.image-type').addEventListener('change', function() {
+    var selectedOption = this.value;
+    if (selectedOption === 'file') {
+        productContainer.querySelector('.file-upload').style.display = 'block';
+        productContainer.querySelector('.image-url-input').style.display = 'none';
+    } else {
+        productContainer.querySelector('.file-upload').style.display = 'none';
+        productContainer.querySelector('.image-url-input').style.display = 'block';
+    }
+});
+
+        document.getElementById('new-products').appendChild(productContainer);
+    });
+</script>
+{% endblock aproduct %}

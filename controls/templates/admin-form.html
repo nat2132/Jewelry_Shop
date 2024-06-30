@@ -1,0 +1,47 @@
+{% extends "abase.html" %}
+{% load static %}
+{% block aform %}
+        <main>
+          {% if admin %}
+          <h1>Update Admin</h1>
+          <div class="date">
+              <input type="date">
+          </div>
+          <div class="recent-orders">
+            <h2>Update Admin</h2>
+                  <form id="product-form" method="post" action="{% url 'admins:update_admin' admin.id %}">
+      {% else %}
+      <h1>Add Admin</h1>
+      <div class="date">
+          <input type="date">
+      </div>
+      <div class="recent-orders">
+        <h2>Add Admin</h2>
+              <form id="product-form" method="post" action="{% url 'admins:add_admin'%}">
+      {% endif %}
+      {% csrf_token %}
+                      <div class="product">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" {% if admin %} value="{{ admin.username }}" {% endif %} required>
+                        <br>
+                        <label for="first_name">Full Name:</label>
+                        <input type="text" id="first_name" name="first_name" {% if admin %} value="{{ admin.first_name }}" {% endif %} required>
+                        <br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" {% if admin %} value="{{ admin.email }}" {% endif %} required>
+                        <br>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <br>
+                        <label for="privilege">Privilege:</label>
+                        <input type="text" id="privilege" name="privilege" {% if admin %} value="{{ admin.privilege }}" {% endif %} required>
+                        <br>
+                    </div>
+                {% if admin %}
+                <button type="submit">Update</button>
+                {% else %}
+                <button type="submit">Add</button>
+                {% endif %}
+                </form>
+        </main>
+        {% endblock aform %}

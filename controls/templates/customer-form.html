@@ -1,0 +1,44 @@
+{% extends "abase.html" %}
+{% load static %}
+{% block cform %}
+        <main>
+          {% if users %}
+          <h1>Update User</h1>
+          <div class="date">
+              <input type="date">
+          </div>
+          <div class="recent-orders">
+            <h2>Update User</h2>
+                  <form id="product-form" method="post" action="{% url 'admins:update_customer' users.id %}">
+      {% else %}
+      <h1>Add User</h1>
+      <div class="date">
+          <input type="date">
+      </div>
+      <div class="recent-orders">
+        <h2>Add User</h2>
+              <form id="product-form" method="post" action="{% url 'admins:add_customer'%}">
+      {% endif %}
+      {% csrf_token %}
+                      <div class="product">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" {% if users %} value="{{ users.username }}" {% endif %} required>
+                        <br>
+                        <label for="first_name">Full Name:</label>
+                        <input type="text" id="first_name" name="first_name" {% if users %} value="{{ users.first_name }}" {% endif %} required>
+                        <br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" {% if users %} value="{{ users.email }}" {% endif %} required>
+                        <br>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <br>
+                    </div>
+                    {% if users %}
+                    <button type="submit">Update</button>
+                    {% else %}
+                    <button type="submit">Add</button>
+                    {% endif %}
+                </form>
+        </main>
+        {% endblock cform %}

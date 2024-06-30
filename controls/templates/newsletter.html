@@ -1,0 +1,104 @@
+{% extends "abase.html" %}
+{% load static %}
+{% block newsletter %}
+        <main>
+            <h1>NewsLetter/Blog Posts</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+            <div class="recent-orders">
+                <h2 style="text-align: center;">NewsLetters</h2>
+                <div class="form-container">
+                    <form id="product-form" action="{% url 'admins:add_newsletter' %}">
+                      {% csrf_token %}
+                      <div class="product">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title"  required>
+                        <br>
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" rows="4" required></textarea>
+                        <br>
+                        <label for="product-image">Product Image:</label>
+                        <input type="file" id="product-image" name="product_image" required>
+                        <br>
+                        <label for="product-description">Product Description:</label>
+                        <textarea id="product-description" name="product_description" rows="4" required></textarea>
+                        <span class="material-icons-sharp close-icon" style="display: none;">close</span>
+                      </div>
+                      <div id="new-products"></div> <!-- New div for additional products -->
+                      <button type="button" class="add-product">Add Product</button>
+                      <button type="submit">Submit</button>
+                    </form>
+                    <h2>Blogs</h2>
+                    {% if blog_post %}
+                    <form id="product-form" method="post" action="{% url 'admins:update_blog' blog_post.id %}" enctype="multipart/form-data">
+                   {% else %}
+                    <form id="product-form" method="post" action="{% url 'admins:create_blog'%}" enctype="multipart/form-data">
+                   {% endif %}
+                      {% csrf_token %}
+                      <label for="title">Title:</label>
+                      <input type="text" id="title" name="title"{% if blog_post %} value="{{ blog_post.title }}" {% endif %} required>
+                      <label for="image">Image:</label>
+                      <input type="file" id="image" name="image" required>
+                      <label for="description">Blog Post Description:</label>
+                      <textarea id="description" name="description" rows="4" required>{% if blog_post %} {{ blog_post.description }} {% endif %}</textarea>
+                      <button type="submit">Submit</button>
+                  </form>
+                    </div>
+                    <div class="recent-orders">
+                      <h2>Blog-lists</h2>
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>Posted Date</th>
+                                  <th>Title</th>
+                                  <th>Update</th>
+                                  <th>Delete</th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {% for blog_post in blog_posts %}
+                              <tr>
+                                  <td>{{ blog_post.posted_date }}</td>
+                                  <td>{{ blog_post.title }}</td>
+                                  <td class="success">
+                                    <a href="{% url 'admins:update_blog' blog_post.id %}">
+                                        <span class="material-icons-sharp">update</span>
+                                    </a>
+                                </td>
+                                <td class="danger">
+                                    <a href="{% url 'admins:delete_blog' blog_post.id %}">
+                                        <span class="material-icons-sharp">delete</span>
+                                    </a>
+                                </td>
+                                  <td></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                      <a href="#">Show All</a>
+                  </div>
+        </main>
+<script>
+    document.querySelector('.add-product').addEventListener('click', function() {
+      var productContainer = document.createElement('div');
+      productContainer.classList.add('product');
+      
+      productContainer.innerHTML = `
+        <label for="product-image">Product Image:</label>
+        <input type="file" name="product_image[]" required>
+        <label for="product-description">Product Description:</label>
+        <textarea name="product_description[]" rows="4" required></textarea>
+        <span class="material-icons-sharp close-icon">close</span>
+      `;
+      
+      productContainer.querySelector('.close-icon').addEventListener('click', function() {
+        productContainer.remove();
+      });
+      
+      document.getElementById('new-products').appendChild(productContainer);
+    });
+  </script>
+  
+  {% endblock newsletter %}

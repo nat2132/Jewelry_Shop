@@ -1,0 +1,56 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block shop %}         
+    <section id="page-header" class="shop-header">
+        <h2>#StayHome</h2>
+        <p>Save more with coupons & up to 70% off! </p>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2> Our Product</h2>
+         <div class="pro-container">
+            {% for product in products %}
+           <div class="pro1 pro" onclick="location.href='{% url 'web:sproduct' product.id %}'">
+            {% if product.main_image_url %}
+            <img src="{{ product.main_image_url }}" alt="{{ product.product_name }}">
+            {% else %}
+            <p>No main image uploaded</p>
+            {% endif %}
+            <div class="des">
+                <span class="Category">{{ product.category }}</span>
+                <h5 class="product">{{ product.product_name }}</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h4 class="shop-price">${{ product.product_price }}</h4>
+                <h4 style="display: none;">Product Details</h4>
+            <span style="display: none;" class="main-desc">{{ product.description }}</span>
+            </div>
+            <a href="#"><i class="bi bi-cart3 cart"></i></a>
+         </div>
+         {% endfor %} 
+        </div>
+    </section>
+
+    <section id="pagination" class="section-p1">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#"><i class="fa-solid fa-arrow-right-long"></i></a>
+    </section>
+
+     <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers</span> </p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your emial address">
+            <button class="normal">Sign Up</button>
+        </div>
+     </section>
+    
+     {% endblock shop %}

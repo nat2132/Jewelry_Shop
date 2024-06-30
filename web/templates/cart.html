@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block cart %} 
+
+    <section id="page-header" class="about-header">
+        <h2>#Shopping Cart</h2>
+        <p>cart is where your jewelry dreams come true! </p>
+    </section>
+
+    <section id="cart" class="section-p1">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td style="display: none;">PPrice</td>
+                    <td>Quantity</td>
+                    <td>Size</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody class="items">
+                <!-- item will be added here dynamically using javascript  -->
+            </tbody>
+        </table>
+    </section> 
+
+    <section id="cart-add" class="section-p1">
+        <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" placeholder="Enter Your Coupon Code">
+                <button class="normal">Apply</button>
+            </div>
+            </div>
+            <div id="subtotal">
+                <h3>Cart Totals</h3>
+                <table>
+                    <tr>
+                        <td>Cart Subtotal</td>
+                        <td class="cart-subtotal"></td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td class="full-cart"><strong></strong></td>
+                    </tr>
+                </table>
+                <a href="{% url 'web:checkout' %}"><button class="normal checkout-btn">Proceed to checkout</button></a>
+            </div>
+        </div>
+    </section>
+    <script>
+    document.querySelector('.checkout-btn').addEventListener('click', function() {
+    // Get the cart data from localStorage
+    const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    // Format the cart data
+    const orderDescription = cartData.map(item => {
+    const subtotal = (item.price + (item.size === 'M' ? 50 : item.size === 'L' ? 100 : 0)) * item.quantity;
+      return {
+        'item-quantity': item.quantity,
+        'item-image': item.image,
+        'item-name': item.name,
+        'item-size': item.size,
+        'item-price': subtotal.toFixed(2) 
+      };
+    });
+  
+    // Store the order description in localStorage
+    localStorage.setItem('orderDescription', JSON.stringify(orderDescription));
+  });
+    </script>
+ {% endblock cart %} 

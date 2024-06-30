@@ -1,0 +1,97 @@
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  .product {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .product label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .product input,
+  .product textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  .product input[type="file"] {
+    padding-top: 5px;
+  }
+  .product textarea {
+    resize: vertical;
+  }
+  .close-icon {
+    cursor: pointer;
+    color: red;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  .close-icon:hover {
+    color: darkred;
+  }
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffbf00;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #03b300;
+  }
+
+  form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  input[type="text"],
+  textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  input[type="file"] {
+    padding-top: 5px;
+  }
+  textarea {
+    resize: vertical;
+  }
+    /* Aligning the forms in a column */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+.form-container form {
+        margin: 20px; /* Adjust as needed */
+    }

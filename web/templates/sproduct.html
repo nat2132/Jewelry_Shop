@@ -1,0 +1,88 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block sproduct %}  
+    <div id="errorPopup" class="popup error-popup">This item is already in your cart.</div>
+<div id="successPopup" class="popup success-popup">Item added to the cart successfully!</div>
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <img src="" width="100%" id="MainImg" alt="{{ product.product_name }}">
+            <div class="small-img-group">
+                {% for product_image in product.productimage_set.all %}
+                <div class="small-img-col">
+                    {% if product_image.image %}
+                    <img src="{{ product_image.image.url }}" alt="{{ product.product_name }}" class="small-img" width="100%">
+                    {% endif %}
+                    {% if product_image.image_url %}
+                    <img src="{{ product_image.image_url }}" alt="{{ product.product_name }}" class="small-img" width="100%">
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="single-pro-details">
+            <h6>Home / <span class="sprod-category"><span></h6>
+            <h4 class="sprod-pro-name" style="color: goldenrod;"></h4>
+            <h2 class="sproduct-price total-price" style="color: goldenrod;"></h2>
+            <select class="s-size" required>
+                <option class="Small">S</option>
+                <option class="Medium">M</option>
+                <option class="Large">L</option>
+            </select>
+            <input class="quantity" type="number" value="1" min="1">
+            <button class="normal addCart" id="addCart">Add To Cart</button>
+            <h4 style="color: goldenrod;">Product Details</h4>
+            <span class="spro-main-desc"></span>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>Featured Products</h2>
+        <p>Summer Collection New Modren Desgin</p>
+         <div class="pro-container">
+            <div class="pro1 pro">
+                {% for product in products %}
+                <img src="{{ product.product_image.url }}" alt="" class="r-img">
+                <div class="des">
+                    <span class="Category">{{ product.category }}</span>
+                    <h5 class="product">{{ product.product_name }}</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4 class="shop-price">${{ product.product_price }}</h4>
+                    <h4 style="display: none;">Product Details</h4>
+                <span style="display: none;" class="main-desc">{{ product.description }}</span>
+                </div>
+                <a href="#"><i class="bi bi-cart3 cart"></i></a>
+             </div>
+             {% endfor %} 
+        </div>
+    </section>
+
+     <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers</span> </p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your emial address">
+            <button class="normal">Sign Up</button>
+        </div>
+     </section>
+
+
+     <script>
+        var MainImg = document.getElementById("MainImg");
+        var smallimg = document.getElementsByClassName("small-img");
+    
+        // Loop through each small image and add click event listener
+        for (var i = 0; i < smallimg.length; i++) {
+            smallimg[i].addEventListener("click", function() {
+                MainImg.src = this.src; // Set the src of MainImg to the clicked small image's src
+            });
+        }
+    </script>
+     {% endblock sproduct %} 
