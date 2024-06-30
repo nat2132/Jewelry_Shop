@@ -1,0 +1,61 @@
+{% extends "abase.html" %}
+{% load static %}
+{% block product %}
+<main>
+    <h1>Product</h1>
+    <div class="date">
+        <input type="date">
+    </div>
+    <div class="recent-orders">
+        <h2>Recent Products</h2>
+        <a href="{% url 'admins:add_product' %}"><span class="material-icons-sharp" style="color: gray; padding-left: 650px;">add_circle</span></a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Product Category</th>
+                    <th>Product</th>
+                    <th>Product Images</th>
+                    <th>Product Description</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>
+                        {% if product.main_image_url %}
+                        <img src="{{ product.main_image_url }}" alt="{{ product.product_name }}" style="border-radius: 30%; width: 100px;">
+                        {% else %}
+                        <p>No main image uploaded</p>
+                        {% endif %}
+                        <span>{{ product.product_name }}, <br> Size: {{ product.product_size }}, <br> Total-price: ${{ product.product_price }}</span>
+                    </td>
+                    <td>
+                        <div>
+                            {% for product_image in product.productimage_set.all %}
+                            {% if product_image.image %}
+                            <img src="{{ product_image.image.url }}" alt="{{ product.product_name }}" style="border-radius: 30%; width: 100px;">
+                            {% endif %}
+                            {% if product_image.image_url %}
+                            <img src="{{ product_image.image_url }}" alt="{{ product.product_name }}" style="border-radius: 30%; width: 100px;">
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </td>
+                    <td>{{ product.description }}</td>
+                    <td class="success"><a href="{% url 'admins:update_product' product.id %}"><span class="material-icons-sharp">update</span></a></td>
+                    <td class="danger"><a href="{% url 'admins:delete_product' product.id %}"><span class="material-icons-sharp">delete</span></a></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="#">Show All Products</a>
+    </div>
+</main>
+{% endblock product %}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>Tezeta Treasures Newsletter</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f6f9fc;
+        }
+
+        .social {
+            padding-right: 10px;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        .social a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-title {
+            color: #4a4a4a;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-description {
+            color: #4a4a4a;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-subscribe {
+            background-color: #ffcc00;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-subscribe:hover {
+            background-color: #f2b300;
+        }
+
+        .product-title {
+            color: #4a4a4a;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #4a4a4a;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .product-link {
+            color: #dab437;
+            text-decoration: none;
+        }
+
+        .product-link:hover {
+            text-decoration: underline;
+        }
+
+        .address {
+            color: #4a4a4a;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .contact-link {
+            color: #dab437;
+            text-decoration: none;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Social Links -->
+        <div class="row bg-warning text-center py-4">
+            <div class="col">
+                <a href="#" class="social"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social"><i class="bi bi-instagram"></i></a> 
+                <a href="#" class="social"><i class="bi bi-twitter"></i></a> 
+                <a href="#" class="social"><i class="bi bi-linkedin"></i></a>   
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <div class="row text-center logo">
+            <div class="col">
+                <a href="#"><img src="{% static img/logo.png%}" alt="logo" class="img-fluid" width="180"></a>
+            </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="row bg-light text-center py-5">
+            <div class="col">
+                <h1 class="newsletter-title">{{ title }}</h1>
+                <p class="newsletter-description">{{ description }}</p>
+                <a href="#" class="btn btn-subscribe">Subscribe Now</a>
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="padding">
+                    <div class="content">
+                        <a href="#"><img src="{{ image_url }}" alt="" class="img-fluid"></a>
+                        <p class="product-title">{{ product_title }}</p>
+                        <p class="product-description">{{product_description}}.</p>
+                        <a href="#" class="product-link">Learn more...</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more product columns here -->
+        </div>
+
+        <!-- Contact Section -->
+        <div class="row bg-light text-center py-5">
+            <div class="col">
+                <a href="#"><img src="{% static img/logo.png%}" alt="" class="img-fluid py-3" width="160"></a>
+                <p class="address">Addis Ababa, Bole</p>
+                <p><a href="mailto:email@gmail.com" class="contact-link">TezetaTreasures@gmail.com</a></p>
+                <p><a href="tel:+251967857465" class="contact-link">+251-967-857-465</a></p>
+                <p><a href="#" class="contact-link">Unsubscribe</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

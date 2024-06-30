@@ -1,0 +1,45 @@
+{% extends "abase.html" %}
+{% load static %}
+{% block order %}
+        <main>
+            <h1>Orders</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+            <div class="recent-orders">
+                <h2>Recent Orders</h2>
+                <table>
+                    <thead>
+                        <tr>
+                          <th>Order Date</th>
+                          <th title="Customer Id">CId</th>
+                          <th title="Customer Name">C Name</th>
+                          <th>Product</th>
+                          <th>Payment Method</th>
+                          <th>Payment Status</th>
+                          <th>Delete</th>
+                          <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_date }}</td>
+                            <td>{{ order.customer.id }}</td>
+                            <td>{{ order.customer.username }}</td>
+                            <td>
+                                <img src="{{ order.products.first.main_image_url }}" alt="" style="border-radius: 30%; width: 100px;">
+                                <span>{{ order.products.first.product_name }}, <br> Size: {{ order.products.first.product_size }}, <br> Total-price: ${{ order.total }}</span>
+                            </td>
+                            <td>{{ order.payment_method }}</td>
+                            <td class="warning">{{ order.payment_status }}</td>
+                            <td class="danger"><span class="material-icons-sharp">delete</span></td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="#">Show All Products</a>
+            </div>
+        </main>
+        {% endblock order %}
