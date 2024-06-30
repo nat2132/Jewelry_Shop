@@ -1,0 +1,132 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="{% static 'sl.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+<div class="background"></div>
+<div class="container">
+    <div class="content">
+        <img src="{% static 'media/logo.png' %}" class="logo" alt="" style="width: 100px;">
+        <div class="text-sci">
+            <h2>Welcome!<br><span>To Our Store.</span></h2>
+            <p style="color: white;">Adorn yourself with timeless elegance. At Tezeta Treasures, we craft exquisite jewelry using high-quality materials, designed to add a touch of luxury to your everyday life.</p>
+            <div class="social-icons">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-telegram'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="logreg-box">
+        <div class="form-box login">
+            <form action="{% url 'user_signin' %}" method="post">
+                {% csrf_token %}
+            <!-- Error message popup -->
+                {% for message in messages %}
+                <div class="error-popup alert-{{ message.tags }}">{{ message }}</div>
+                <div class="success-popup alert-{{ message.tags }}" >{{ message }}</div>
+                {% endfor %}
+                <h2>Sign In</h2>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-envelope'></i></span>
+                    <input type="text" name="username" required>
+                    <label>User Name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <form action="{% url 'user_signup' %}" method="post">
+                {% csrf_token %}
+                <!-- Error message popup -->
+                {% for message in messages %}
+                <div class="error-popup alert-{{ message.tags }}">{{ message }}</div>
+                <div class="success-popup alert-{{ message.tags }}" >{{ message }}</div>
+                {% endfor %}
+                <h2>Sign Up</h2>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-user'></i></span>
+                    <input type="text" name="username" required>
+                    <label>User Name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-user'></i></span>
+                    <input type="text" name="fname" required>
+                    <label>Full Name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-envelope'></i></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="confirm_password" required>
+                    <label>Confirm Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">I agree to the terms & conditions</label>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <div class="login-register">
+                    <p>Already have an account? <a href="#" class="login-link">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{% static 'app.js' %}" defer></script>
+<script>
+        // Function to show success or error popup
+        function showMessagePopup(message, messageType, formType) {
+          const popup = document.querySelector(`.${messageType}-popup`); // Get popup element by message type
+          if (popup) { // Check if element exists before manipulating it
+            popup.innerText = message;
+            popup.classList.add('show');
+            setTimeout(() => {
+              popup.classList.remove('show');
+            }, 5000); // 5 seconds timeout for popup
+          } else {
+            console.error(`${messageType} popup element not found`);
+          }
+        }
+        
+        // Access Django success or error messages and show popups
+        const messages = document.querySelectorAll('.error-popup'); 
+        
+        // Loop through Django messages and show popups
+        messages.forEach(message => {
+          const messageText = message.textContent;
+          const messageType = message.classList.contains('alert-success') ? 'success' : 'error';
+          const formType = message.parentElement.parentElement.classList.contains('login') ? 'login' : 'register'; // Identify form type
+          showMessagePopup(messageText, messageType, formType);
+        });
+        </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+body{
+    background-color: #F7EEDD;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h4 {
+   font-size: medium;
+   color: #E2BFB3;
+}
+#user {
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-right: 20px;
+}
+
+#user img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#profile-settings {
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+#profile-settings h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#profile-settings label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+#profile-settings input[type="text"],
+#profile-settings input[type="email"],
+#profile-settings input[type="password"] {
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#profile-settings input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffb700;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#profile-settings input[type="submit"]:hover {
+    background-color: #b38900;
+}
+
+.error-popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.error-popup.show {
+    display: block;
+}
+
+.success-popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #6bff6b; /* Change color as desired */
+    color: white;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.success-popup.show {
+    display: block;
+}

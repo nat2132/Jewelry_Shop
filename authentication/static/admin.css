@@ -1,0 +1,148 @@
+.container2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h4 {
+   font-size: medium;
+}
+#admin {
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    margin-right: 20px;
+}
+
+#admin h4 {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+}
+
+#admin h4:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    color: #666;
+}
+
+#admin h4:last-child {
+    font-size: 14px;
+    color: #999;
+}
+
+#admin_img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+    align-items: center;
+    width: 200px;
+}
+
+#admin_img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#profile-settings {
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+#profile-settings h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#profile-settings label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+#profile-settings input[type="text"],
+#profile-settings input[type="email"],
+#profile-settings input[type="password"] {
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#profile-settings input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffb700;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#profile-settings input[type="text"]:focus,
+#profile-settings input[type="email"]:focus,
+#profile-settings input[type="password"]:focus {
+    box-shadow: 0px 0px 5px #0099ff;
+}
+
+#profile-settings input[type="submit"]:hover {
+    background-color: #b38900;
+}
+
+.error-popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #f35a0d;
+    color: white;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.error-popup.show {
+    display: block;
+}
+
+.success-popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #659a20; /* Change color as desired */
+    color: white;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.success-popup.show {
+    display: block;
+}
