@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Radley&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: #444;
+    font-family:  'DM Serif Display', serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button i{
+    position: absolute;
+    top: 50px;
+    right: 150px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #f60707;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    height: 80vh;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    margin: 0 auto;
+}
+
+.left {
+    width: 250px;
+    font-weight: bold;
+    overflow: hidden; /* Added to prevent long text overflow */
+}
+
+.left p {
+    padding: 30px 20px;
+}
+
+.methods {
+    padding: 10px 0;
+}
+
+.methods div {
+    padding: 7px 20px;
+    cursor: pointer;
+}
+
+.methods div:hover {
+    box-shadow: 0 0 10px rgba(172, 255, 47, 0.196);
+}
+
+.methods div::after {
+    content: '';
+    display: inline-block;
+    color: goldenrod;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 4px 0 4px 4px;
+    border-left-color: var(--fondy-success);
+    margin-left: 10px;
+}
+
+.fa-solid {
+    margin-right: 10px;
+    font-size: 22px;
+    color: #aaa;
+}
+
+.center {
+    width: 350px; /* Set a fixed width */
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    min-height: 70vh;
+    overflow-y: auto;  /* Added to allow scrolling if content exceeds viewport height */
+}
+
+.center a {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+.right {
+    width: 320px;
+    height: 400px;
+    overflow: auto;
+}
+
+.right p {
+    padding: 30px 20px;
+    font-weight: bold;
+}
+
+.details {
+    padding: 20px 20px;
+}
+
+.right a {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.card-details {
+    padding: 20px;
+}
+
+.card-details .c-number {
+    width: 100%;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 0 12px;
+    margin-top: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cc-number input {
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    width: 90%;
+}
+
+.cc-number i {
+    font-size: 20px;
+    color: #aaa;
+}
+
+.c-details {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.cc-exp {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    height: 50px;
+    margin-top: 10px;
+    padding: 12px;
+    width: 150px;
+}
+
+.c-details .cvv-box {
+    border: 1px solid #aaa;
+    margin-top: 10px;
+    padding: 12px;
+    height: 50px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    width: 108px;
+}
+
+.cc-cvv {
+    width: 60px;
+}
+
+.email input {
+    width: 100%;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 12px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+button {
+    width: 100%;
+    border: none;
+    height: 50px;
+    border-radius: 3px;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #444;
+    background-color: rgb(242, 197, 101);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+    color: white;
+}
+
+.telebirr-section,
+.bank-section {
+    display: none;
+    padding: 20px;
+    background-color: transparent;
+    border-bottom: 1px solid #ccc;
+}
+
+.payment-section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.telebirr-details,
+.bank-details {
+    margin-top: 10px;
+}
+
+.telebirr-number,
+.telebirr-amount,
+.bank-name,
+.account-number,
+.routing-number {
+    width: 100%;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.telebirr-amount,
+.routing-number {
+    margin-top: 10px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.order-item img {
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.item-description {
+    margin: 0;
+}
+
+.item-price {
+    font-weight: bold;
+}
+
+.order-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.order-summary p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.order-item-summary {
+    font-size: 16px;
+}
+
+
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+    
+    .container {
+        flex-direction: column;
+    }
+
+    .left,
+    .center,
+    .right {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        border-radius: 0;
+    }
+
+    .left {
+        padding-bottom: 15px;
+    }
+
+    .center {
+        border: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .right {
+        padding-top: 15px;
+    }
+
+    .methods div::after {
+        display: none;
+    }
+}

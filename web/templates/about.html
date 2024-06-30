@@ -1,0 +1,55 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block about %}
+       
+    <section id="page-header" class="about-header">
+        <h2>#KnowUs</h2>
+        <p>We are dedicated to providing you with exceptional quality</p>
+    </section>
+
+    <section id="about-head" class="section-p1">
+        <img src="{% static 'img/about/a1.gif'%}" alt="">
+        <div>
+            <h2>Who We Are?</h2>
+            <p>Tezeta Treasures is born out of a passion for , handcrafted pieces, timeless designs, or empowering expression. We believe that jewelry is more than just an accessory; it's a form of self-expression, a way to celebrate life's moments, or a symbol of personal connection. Our commitment lies in providing ethically sourced materials, crafting exceptional quality pieces, or curating unique collections. Whether you're searching for a statement piece or a timeless treasure, we invite you to explore our carefully selected collection and discover the perfect piece to tell your story.</p>
+        </div>
+    </section>
+
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="{% static 'img/features/f1.jpg'%}" alt="">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'img/features/f2.jpg' %}" alt="">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'img/features/f3.jpg' %}" alt="">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'img/features/f4.jpg' %}" alt="">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'img/features/f5.jpg' %}" alt="">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'img/features/f6.jpg' %}" alt="">
+            <h6>F24/7 Support</h6>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers</span> </p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your emial address">
+            <button class="normal">Sign Up</button>
+        </div>
+     </section>
+  {% endblock about %}
