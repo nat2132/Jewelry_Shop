@@ -1,3 +1,3 @@
 # Jewelry_Shop
-<h2>its a jewelry shop ecommerce website
-</h2>
+<h5>its a jewelry shop ecommerce website
+</h5>
